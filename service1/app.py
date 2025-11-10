@@ -11,7 +11,7 @@ def home():
 def call_service2():
     try:
         response = requests.get("http://service2:5001/")
-        return jsonify(message="Service 1 received: " + response.json()['message'])
+        return jsonify(message="(CI CHECK PUSH) Service 1 received: " + response.json()['message'])
     except Exception as e:
         return jsonify(error=str(e)), 500
 
