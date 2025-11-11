@@ -1,3 +1,4 @@
 1. Ci/Cd 
 2. Azure vm setup
 3. code with nana ci/cd  
+sss
