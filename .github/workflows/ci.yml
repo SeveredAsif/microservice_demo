@@ -60,10 +60,9 @@ jobs:
           script: |
             docker pull asifkhan131/service1:latest
             docker pull asifkhan131/service2:latest
-            cd ./asif/microservice_demo
-            git pull origin main
-            docker compose down
-            docker compose up -d
+            docker run -d -p 6001:6001 --name service2
+            docker run -d -p 80:6000 --name service1 
+            
 
 
   
