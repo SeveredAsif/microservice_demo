@@ -50,7 +50,7 @@ jobs:
           context: ./service2
           push: true
           tags: asifkhan131/service2:latest
-          
+
       - name: Deploy to Azure VM
         uses: appleboy/ssh-action@v0.1.9
         with:
@@ -60,6 +60,7 @@ jobs:
           script: |
             docker pull asifkhan131/service1:latest
             docker pull asifkhan131/service2:latest
+            cd ./asif/microservice_demo
             docker compose down
             docker compose up -d
 
