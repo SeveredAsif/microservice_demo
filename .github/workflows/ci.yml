@@ -58,6 +58,10 @@ jobs:
           username: api_avengers
           key: ${{ secrets.AZURE_VM_KEY }}
           script: |
+            docker stop service1 
+            docker stop service2
+            docker rmi asifkhan131/service1:latest
+            docker rmi asifkhan131/service2:latest
             docker pull asifkhan131/service1:latest
             docker pull asifkhan131/service2:latest
             docker run -d -p 6001:6001 --name service2
