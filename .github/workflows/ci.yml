@@ -80,5 +80,6 @@ jobs:
             docker pull asifkhan131/service2:latest
 
             # Run both containers
-            docker run -d -p 6001:6001 --name service2 asifkhan131/service2:latest
-            docker run -d -p 80:6000 --name service1 asifkhan131/service1:latest
+            docker network create micro_net
+            docker run -d --name service2 --network micro_net -p 6001:6001 asifkhan131/service2:latest
+            docker run -d --name service1 --network micro_net -p 80:6000 asifkhan131/service1:latest
