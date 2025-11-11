@@ -61,6 +61,7 @@ jobs:
             docker pull asifkhan131/service1:latest
             docker pull asifkhan131/service2:latest
             cd ./asif/microservice_demo
+            git pull origin main
             docker compose down
             docker compose up -d
 
