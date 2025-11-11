@@ -11,6 +11,6 @@ services:
     build: ./service2
     container_name: service2
     ports:
-      - "5001:5001"
+      - "6001:6001"
 
 
