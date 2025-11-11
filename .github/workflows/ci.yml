@@ -50,3 +50,18 @@ jobs:
           context: ./service2
           push: true
           tags: asifkhan131/service2:latest
+          
+      - name: Deploy to Azure VM
+        uses: appleboy/ssh-action@v0.1.9
+        with:
+          host: ${{ secrets.AZURE_VM_IP }}
+          username: api_avengers
+          key: ${{ secrets.AZURE_VM_KEY }}
+          script: |
+            docker pull asifkhan131/service1:latest
+            docker pull asifkhan131/service2:latest
+            docker compose down
+            docker compose up -d
+
+
+  
