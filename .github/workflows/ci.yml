@@ -65,21 +65,12 @@ jobs:
           username: api_avengers
           key: ${{ secrets.AZURE_VM_KEY }}
           script: |
-            # Stop and remove old containers
-            docker stop service1 || true
-            docker stop service2 || true
-            docker rm service1 || true
-            docker rm service2 || true
+            cd ./asif/microservice_demo
+            docker compose down
 
             # Remove old images
-            docker rmi asifkhan131/service1:latest || true
-            docker rmi asifkhan131/service2:latest || true
-
-            # Pull latest images from Docker Hub
-            docker pull asifkhan131/service1:latest
-            docker pull asifkhan131/service2:latest
-
-            # Run both containers
-            docker network create micro_net
-            docker run -d --name service2 --network micro_net -p 6001:6001 asifkhan131/service2:latest
-            docker run -d --name service1 --network micro_net -p 80:6000 asifkhan131/service1:latest
+            docker rmi microservice_demo-service1:latest  || true
+            docker rmi microservice_demo-service2:latest  || true
+            git pull origin main
+            
+            docker compose up -d
