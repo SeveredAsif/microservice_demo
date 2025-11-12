@@ -73,4 +73,4 @@ jobs:
             docker rmi microservice_demo-service2:latest  || true
             git pull origin main
             
-            docker compose up -d
+            docker compose up --build -d
